@@ -486,6 +486,12 @@
     <!-- Story Page -->
     <div class="story-page page-box" id="storyPage" style="display:none;">
         <div class="story-title">Hello doston! 👿🤘</div>
+        <div class="emoji-reactions" id="emojiReactions1">
+            <button class="emoji-reaction-btn" data-emoji="😂">😂<span class="emoji-reaction-count" id="emojiCount-😂">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="😈">😈<span class="emoji-reaction-count" id="emojiCount-😈">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🤙">🤙<span class="emoji-reaction-count" id="emojiCount-🤙">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🤘">🤘<span class="emoji-reaction-count" id="emojiCount-🤘">0</span></button>
+        </div>
         <div class="story-section">
             <b>School ke teachers aur unki yaadein:</b><br>
             <ul>
@@ -521,6 +527,11 @@
     </div>
     <!-- Warden Page -->
     <div class="warden-page page-box" id="wardenPage" style="display:none;">
+        <div class="emoji-reactions" id="emojiReactions2">
+            <button class="emoji-reaction-btn" data-emoji="😎">😎<span class="emoji-reaction-count" id="emojiCount2-😎">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🖕">🖕<span class="emoji-reaction-count" id="emojiCount2-🖕">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🤝">🤝<span class="emoji-reaction-count" id="emojiCount2-🤝">0</span></button>
+        </div>
         <div class="story-section">
             <b>Hamare Hostel ke Warden:</b>
             <ul>
@@ -650,6 +661,25 @@
             if(window.confetti) confetti({particleCount: 200, spread: 120, origin: { y: 0.65 }});
             e.preventDefault();
         });
+
+        // Emoji reactions for storyPage and wardenPage
+        function setupEmojiReactions(containerId, prefix="") {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            container.querySelectorAll('.emoji-reaction-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const emoji = btn.getAttribute('data-emoji');
+                    const countSpan = document.getElementById((prefix ? prefix : '') + 'emojiCount' + (prefix ? '' : '-') + emoji);
+                    let count = parseInt(countSpan.textContent, 10);
+                    count++;
+                    countSpan.textContent = count;
+                    btn.classList.add('active-btn');
+                    setTimeout(() => btn.classList.remove('active-btn'), 300);
+                });
+            });
+        }
+        setupEmojiReactions('emojiReactions1');
+        setupEmojiReactions('emojiReactions2','2-');
         showPage('loginContainer');
     </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
