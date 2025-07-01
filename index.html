@@ -261,7 +261,7 @@
             font-style: italic;
         }
         /* Story page */
-        .story-page, .warden-page {
+        .story-page, .warden-page, .final-page {
             display: none;
             max-width: 700px;
             text-align: left;
@@ -291,7 +291,7 @@
             margin-top: 18px;
         }
         @media (max-width: 700px) {
-            .page-box, .nicknames-page, .story-page, .warden-page {
+            .page-box, .nicknames-page, .story-page, .warden-page, .final-page {
                 width: 98vw;
                 padding: 18px 2vw 16px 2vw;
                 min-width: 0;
@@ -518,6 +518,13 @@
             </div>
             <hr>
         </div>
+        <!-- NEW NEXT BUTTON BEFORE "Toh doston..." -->
+        <div class="next-btn-box">
+            <button class="neon-btn neon-submit" id="toFinalBtn"><span>NEXT</span></button>
+        </div>
+    </div>
+    <!-- Final Page (hidden by default) -->
+    <div class="final-page page-box" id="finalPage" style="display:none;">
         <div class="story-section">
             <b>Toh doston...</b><br>
             Ye thi hamari school life ki original web series –<br>
@@ -590,6 +597,12 @@
         document.getElementById('toWardenBtn').addEventListener('click', function(e) {
             document.getElementById('storyPage').style.display = 'none';
             document.getElementById('wardenPage').style.display = 'block';
+            e.preventDefault();
+        });
+        // Warden NEXT to Final (Toh doston...)
+        document.getElementById('toFinalBtn').addEventListener('click', function(e) {
+            document.getElementById('wardenPage').style.display = 'none';
+            document.getElementById('finalPage').style.display = 'block';
             e.preventDefault();
         });
     </script>
