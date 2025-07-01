@@ -7,9 +7,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Montserrat:400,700&display=swap" rel="stylesheet">
     <style>
-        html, body {
-            height: 100%;
-        }
+        html, body { height: 100%; }
         body {
             margin: 0;
             padding: 0;
@@ -19,7 +17,6 @@
             position: relative;
             background: linear-gradient(135deg, #090D23 0%, #2a0b31 55%, #00fff0 100%);
         }
-        /* Emoji background */
         .emoji-bg {
             pointer-events: none;
             z-index: 0;
@@ -39,18 +36,11 @@
             filter: drop-shadow(0 0 10px #2fffc0CC) drop-shadow(0 0 12px #ff3c70CC);
         }
         @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) scale(1) rotate(0deg);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity: 0; }
             10% { opacity: 0.7; }
             90% { opacity: 0.7; }
-            100% {
-                transform: translateY(-20vh) scale(1.3) rotate(360deg);
-                opacity: 0;
-            }
+            100% { transform: translateY(-20vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
-        /* Main content */
         .page-box {
             background: rgba(14, 22, 35, 0.95);
             border-radius: 30px;
@@ -105,10 +95,7 @@
             text-shadow: 0 0 18px #c1eaff, 0 0 2px #fff;
             font-weight: bold;
         }
-        .input-group {
-            position: relative;
-            margin-bottom: 32px;
-        }
+        .input-group { position: relative; margin-bottom: 32px; }
         .input-group input,
         .input-group textarea {
             width: 100%;
@@ -275,11 +262,6 @@
             font-weight: 600;
             text-shadow: 0 0 6px #181828, 0 0 2px #fff6;
         }
-        .next-btn-box {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
         .nicknames-page {
             display: none;
             max-width: 550px;
@@ -397,6 +379,11 @@
             70% { transform: rotateY(15deg) scale(1.03);}
             100% { transform: rotateY(0deg) scale(1);}
         }
+        .next-btn-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
         @media (max-width: 700px) {
             .page-box, .nicknames-page, .story-page, .warden-page, .final-page {
                 width: 98vw;
@@ -438,16 +425,14 @@
             </div>
             <div class="say-error" id="sayError">Please say something!</div>
             <div class="next-btn-box">
-                <button type="submit" class="neon-btn neon-submit" id="submitBtn" style="margin-top:8px;">
-                    <span>THOKO</span>
-                </button>
+                <button type="submit" class="neon-btn neon-submit" id="submitBtn"><span>THOKO</span></button>
             </div>
             <div class="no-db-warning">
                 <span>😆 No database here, so your data just vanishes like my motivation on Monday!</span>
             </div>
         </form>
     </div>
-    <!-- Success Message (hidden by default) -->
+    <!-- Success Message -->
     <div class="success-box page-box" id="successBox" style="display:none;">
         <span class="big-emoji">😈</span>
         <h1>DOSTI YAARI EMOTIONS</h1>
@@ -470,58 +455,25 @@
             <button class="neon-btn neon-submit" id="toNicknamesBtn"><span>THOKO ALSO</span></button>
         </div>
     </div>
-    <!-- Nicknames Page (hidden by default) -->
+    <!-- Nicknames Page -->
     <div class="nicknames-page page-box" id="nicknamesPage" style="display:none;">
         <div class="nicknames-title">Bokchodiyaan 😎🤘</div>
         <table class="nicknames-table">
             <thead>
-                <tr>
-                    <th>Nicknames</th>
-                </tr>
+                <tr><th>Nicknames</th></tr>
             </thead>
             <tbody>
-                <tr><td>Ajay</td></tr>
-                <tr><td>Alian</td></tr>
-                <tr><td>Anisur</td></tr>
-                <tr><td>Musna</td></tr>
-                <tr><td>Arhan</td></tr>
-                <tr><td>Kallu</td></tr>
-                <tr><td>Arjun</td></tr>
-                <tr><td>Kariya</td></tr>
-                <tr><td>Ashif</td></tr>
-                <tr><td>kallua</td></tr>
-                <tr><td>Salman</td></tr>
-                <tr><td>bakkar</td></tr>
-                <tr><td>Om babu</td></tr>
-                <tr><td>Gannu</td></tr>
-                <tr><td>Hasan</td></tr>
-                <tr><td>Munna</td></tr>
-                <tr><td>Ishan</td></tr>
-                <tr><td>Milk Factory</td></tr>
-                <tr><td>Shourya</td></tr>
-                <tr><td>maugi</td></tr>
-                <tr><td>Naitik</td></tr>
-                <tr><td>Rassian</td></tr>
-                <tr><td>Piyush</td></tr>
-                <tr><td>Chussar</td></tr>
-                <tr><td>Prantik</td></tr>
-                <tr><td>Bargar</td></tr>
-                <tr><td>Pranav</td></tr>
-                <tr><td>Pichcha</td></tr>
-                <tr><td>Raj</td></tr>
-                <tr><td>Deru</td></tr>
-                <tr><td>Satyam</td></tr>
-                <tr><td>Bauna</td></tr>
-                <tr><td>Satyam</td></tr>
-                <tr><td>Tamatar</td></tr>
-                <tr><td>Sonu</td></tr>
-                <tr><td>Kalwa</td></tr>
-                <tr><td>Sudhanshu</td></tr>
-                <tr><td>Anda</td></tr>
-                <tr><td>Sumit</td></tr>
-                <tr><td>Gulli</td></tr>
-                <tr><td>Yashwardhan</td></tr>
-                <tr><td>Gola</td></tr>
+                <tr><td>Ajay</td></tr><tr><td>Alian</td></tr><tr><td>Anisur</td></tr><tr><td>Musna</td></tr>
+                <tr><td>Arhan</td></tr><tr><td>Kallu</td></tr><tr><td>Arjun</td></tr><tr><td>Kariya</td></tr>
+                <tr><td>Ashif</td></tr><tr><td>kallua</td></tr><tr><td>Salman</td></tr><tr><td>bakkar</td></tr>
+                <tr><td>Om babu</td></tr><tr><td>Gannu</td></tr><tr><td>Hasan</td></tr><tr><td>Munna</td></tr>
+                <tr><td>Ishan</td></tr><tr><td>Milk Factory</td></tr><tr><td>Shourya</td></tr><tr><td>maugi</td></tr>
+                <tr><td>Naitik</td></tr><tr><td>Rassian</td></tr><tr><td>Piyush</td></tr><tr><td>Chussar</td></tr>
+                <tr><td>Prantik</td></tr><tr><td>Bargar</td></tr><tr><td>Pranav</td></tr><tr><td>Pichcha</td></tr>
+                <tr><td>Raj</td></tr><tr><td>Deru</td></tr><tr><td>Satyam</td></tr><tr><td>Bauna</td></tr>
+                <tr><td>Satyam</td></tr><tr><td>Tamatar</td></tr><tr><td>Sonu</td></tr><tr><td>Kalwa</td></tr>
+                <tr><td>Sudhanshu</td></tr><tr><td>Anda</td></tr><tr><td>Sumit</td></tr><tr><td>Gulli</td></tr>
+                <tr><td>Yashwardhan</td></tr><tr><td>Gola</td></tr>
             </tbody>
         </table>
         <div class="nickname-note">
@@ -531,149 +483,56 @@
             <button class="neon-btn neon-submit" id="toStoryBtn"><span>PHIR SE THOKO</span></button>
         </div>
     </div>
-    <!-- Story Page (hidden by default) -->
+    <!-- Story Page -->
     <div class="story-page page-box" id="storyPage" style="display:none;">
         <div class="story-title">Hello doston! 👿🤘</div>
-        <div class="emoji-reactions" id="emojiReactions1">
-            <button class="emoji-reaction-btn" data-emoji="😂">😂<span class="emoji-reaction-count" id="emojiCount-😂">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="😈">😈<span class="emoji-reaction-count" id="emojiCount-😈">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="🤙">🤙<span class="emoji-reaction-count" id="emojiCount-🤙">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="🤘">🤘<span class="emoji-reaction-count" id="emojiCount-🤘">0</span></button>
-        </div>
         <div class="story-section">
-            Aaj main leke aaya hoon hamari school life ki ek aisi story, jo funny bhi hai, emotional bhi... aur thodi thodi censored bhi!<br>
-            <b>Toh chalo, shuru karte hain – yaadon ka ye safar!</b>
-            <hr>
+            <b>School ke teachers aur unki yaadein:</b><br>
+            <ul>
+                <li><b>Rishav Sir</b>: School ki motivation ki factory.</li>
+                <li><b>Chandraketu Sir</b>: Unka padhane ka style... ahem... legendary! 😂</li>
+                <li><b>Sudhakar Sir</b>: Reason ho ya na ho, maar pakki. Lekin dil ke acche.</li>
+                <li><b>Divya Jyoti Mam</b>: Science ki queen, masti ki machine.</li>
+                <li><b>Sujit & Pratyush Sir</b>: Hamare superheroes, hamesha ready to help.</li>
+                <li><b>Vikash Sir</b>: "Padho na ji, exam sir pe hai!"</li>
+                <li><b>Arun Sir</b>: Har baat par NCERT, BJP aur motivation!</li>
+                <li><b>Principal Sir</b>: "I sham on you boys!" - sabko yaad hai!</li>
+                <li><b>Prantik & Chandraketu Sir</b>: Chemistry wali chemistry! 😏</li>
+                <li><b>Nishant Sir</b>: Bindaas, no filter!</li>
+                <li><b>Neeraj Sir</b>: Jee-NEET wala gyaan.</li>
+                <li><b>Ujjwal Sir</b>: "Tum log lalla ho re!"</li>
+                <li><b>Guddu Sir</b>: "Tor dunga!"</li>
+                <li><b>Ranjan Sir</b>: "Kut dunga!" & funny towel kahaniyan.</li>
+                <li><b>Undranil Sir</b>: DJ Snake + BP Check = Allrounder!</li>
+                <li><b>Kundan Sir</b>: YouTube projector, mini-theatre.</li>
+                <li><b>Sudipto Sir</b>: Hamari pareshaniyon ka shikar.</li>
+                <li><b>Manoranjan Sir</b>: Philosopher king.</li>
+                <li><b>Simon Sir</b>: G** phaad marna since 5th!</li>
+                <li><b>Ravi Sir</b>: Notes likhwane ki machine.</li>
+                <li><b>DB Wandgr Sir</b>: Chutney ki recipe aur haryali jokes.</li>
+                <li><b>Premlata Ma’am & Raushan</b>: Maa-beta jodi, suspense queen.</li>
+                <li><b>DK Jha Sir</b>: "Ye log padne waale nahi lagte!"</li>
+                <li><b>Archana Ma’am</b>: Naam lete hi censored ho jaata hai. 🤐</li>
+            </ul>
         </div>
-        <div class="nickname-note">
-            (If someone wants to add their name, please contact me. <span class="sorry-text">Also sorry for that 😅</span>)
-        </div>
-        <div class="next-btn-box">
-            <button class="neon-btn neon-submit" id="toStoryBtn"><span>NEXT</span></button>
-        </div>
-    </div>
-    <!-- Story Page (hidden by default) -->
-    <div class="story-page page-box" id="storyPage" style="display:none;">
-        <div class="story-title">Hello doston!</div>
-        <div class="story-section">
-            Aaj main leke aaya hoon hamari school life ki ek aisi story, jo funny bhi hai, emotional bhi... aur thodi thodi censored bhi!<br>
-            <b>Toh chalo, shuru karte hain – yaadon ka ye safar!</b>
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Sabse pehle Class 8th –</b><br>
-            Jahan Rishav Sir se mila motivation. Padhai ki shuruaat wahi se hui.<br><br>
-            <b>Class 9th me enter kiya, aur mila tharak waale Chandraketu Sir,</b><br>
-            Jinka padhane ka style hi alag tha – middle finger dikhake padhaate the! 😳<br><br>
-            <b>Phir aaye Sudhakar Sir –</b><br>
-            Bina wajah ka maar, bina reason ka gussa… lekin dil se teacher the (ya thhe?)<br><br>
-            <b>Divya Jyoti ka science –</b><br>
-            Are bhai 💀… maja hi aa jaata tha but kuch samjh nhi <br><br>
-            <b>Sujit aur Pratyush Sir –</b><br>
-            Humare school ke superheroes. Hamesha help karne ko ready.<br><br>
-            <b>Vikash Sir ka daily dialogue toh sabko yaad hai:</b>
-            <span class="teacher-dialogue">“Padho na ji, exam sir pe hai, tum log ko kuch samajh hi nahi aa raha hai! Phir hamara bolna sir photo dikhaiyein naa!! ModernABC laga lo or Stalin malohotra aur alsb book laga lo”</span>
-            <b> Arun sir-</b>
-            bat bat par bjp ko bich mein le lena aur other party ko blame thokna aur pura motivate karna ki padh lo re babu NCERT mother book hain<br>
-            <hr>
-        </div>
-        <div class="story-section">
-            Maths aur English ko ignore karke, aur har dusre subject me jakar sona –<br>
-            Humara unofficial timetable ban chuka tha.<br><br>
-            Or phir principal sir ka gussa:
-            <span class="teacher-dialogue">“I sham on you boys! Mujhe chhote chhote bachche aa ke kehte hai udhar bhaiya log maa behen ki gaali dete hai”</span>
-            (Shame se zyada “sham” lagta tha 😅)
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Ab thoda masala zone me chalte hain...</b><br><br>
-            <b>Prantik aur Chandraketu Sir ka rishta –</b><br>
-            Bhai kya chemistry thi un dono me, full filmy! 😏<br><br>
-            <b>Nishant Sir –</b><br>
-            Jo dil me tha, wahi zubaan par. Bilkul bindass. No filter!<br><br>
-            <b>Neeraj Sir –</b><br>
-            Har baar bolte:
-            <span class="teacher-dialogue">“Woh 4 bacche ko chhodo, tum log bhi seekh lo re! Jee-NEET karega to kaam aayega!”</span><br>
-            <b>Ujjwal Sir ka famous dialogue:</b>
-            <span class="teacher-dialogue">“Abhi tum log lalla ho re, samajh rahe ho na?(phir hath ko move krna)”</span><br>
-            <b>Guddu Sir ka warning tone:</b>
-            <span class="teacher-dialogue">“Tor dunga!”</span><br>
-            <b>Ranjan Sir ka upgraded version:</b>
-            <span class="teacher-dialogue">“Kut dunga! <br>satyam ke sath kahani banana aur kundan sir ka towel ko petrol pump tak pahuchana ”</span>
-            (Physics ka asli matlab tab samjha 😬)
-            <br><b>Undranil sir ka DJ Snake wala version:</b><br>
-            Maths ,Physics, Chemistry sath mein inse related jo bhi work hota hai like BP check krna DJ operate karna. Tum jo karna lo, ("He was the example of an engineer 😅 ")
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Kundan Sir –</b><br>
-            Projector bol ke YouTube laga dete the, aur class ban jata mini-theatre. aur unka kehna (toh chaleye) aur saurabh aur satyam ka chalna shuru ho jana<br><br>
-            <b>Sudipto Sir ko har waqt bina wajah pareshan karna –</b><br>
-            Hamari hobby thi, unka patience legend tha.<br><br>
-            <b>Manoranjan Sir –</b><br>
-            Class ka philosopher. Gyan hi gyan. Kabhi kabhi over ho jaata tha.<br><br>
-            <b>Rishav Sir –</b><br>
-            Woh iconic biology moment – sperm ka demo… "beta hath se nikalta hai!"<br>
-            Tab samajh aaya ki science kitni "deep" hoti hai. 😅
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Simon Sir –</b><br>
-            "Unka G** phaad marna 5th me hi!”*<br>
-            <b>Ravi Sir –</b><br>
-            Janwar ke tarah notes likhwaate the – itna likhwaate the ki haath ka dard permanent ho gaya. padh lo na re aage exam hn!!! <br><br>
-            <b>DB wandgr Sir –</b><br>
-            Unki class thi ya chutney ki recipe? Taste alag hi tha. <br>aur kehna le le haryali dekh <br> pura thok pura de halka daba😂
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Aur fir aaye maa-beta jodi –</b><br>
-            Premlata Ma’am aur Raushan – ekdum "sanskaar aur suspense" ka combo.<br><br>
-            <b>DK Jha Sir –</b><br>
-            Pehle bolte:
-            <span class="teacher-dialogue">“Ye log padne waale nahi lagte!”</span>
-            Aur fir kuch time baad:
-            <span class="teacher-dialogue">“Ab thoda thoda lag raha hai. <br>aur unka kehna padh lo na re DAV centre pada hn kachkacha ke hagh dega waha par ”</span>
-            <br><br>
-            Last year ka baccha – sabse sahi tha. Bilkul ideal student.<br><br>
-            <b>Aur last me Archana Ma’am ka zikr –</b><br>
-            Unka naam lete hi… censored chaloo ho jata hai – *** ** *********<br>
-            (Thoda privacy maintain karna padta hai boss 😅)
-            <hr>
-        </div>
-        <!-- NEXT BUTTON SECTION (before warden story) -->
-        <div class="next-btn-box">
-            <button class="neon-btn neon-submit" id="toWardenBtn"><span>NEXT</span></button>
-        </div>
-    </div>
-
-        <!-- ... rest of your story sections ... (unchanged) ... -->
-        <!-- NEXT BUTTON SECTION (before warden story) -->
         <div class="next-btn-box">
             <button class="neon-btn neon-submit" id="toWardenBtn"><span>THOKO NA RE</span></button>
         </div>
     </div>
-    <!-- Warden Page (hidden by default) -->
+    <!-- Warden Page -->
     <div class="warden-page page-box" id="wardenPage" style="display:none;">
-        <div class="emoji-reactions" id="emojiReactions2">
-            <button class="emoji-reaction-btn" data-emoji="😎">😎<span class="emoji-reaction-count" id="emojiCount2-😎">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="🖕">🖕<span class="emoji-reaction-count" id="emojiCount2-🖕">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="🤝">🤝<span class="emoji-reaction-count" id="emojiCount2-🤝">0</span></button>
-        </div>
         <div class="story-section">
-            <div class="kuch hamare warden ke bare main">
-                <b> Suru karte hai 3rd floor se</b><br>
-                ye floor aise bole toh<b>deepak sir</b> ke under aata hn.<br>jinka ek famous dailogue  <span class="teacher-dialogue"> "ek mukka denge na aur aaj tak ke sare batch ke bacche ka nam yad ho ya na par unka admission number pura acche se yad rkhna."</span>
-                <b> Phir aata hai 2nd floor</b><br>
-            </div>
-            <hr>
+            <b>Hamare Hostel ke Warden:</b>
+            <ul>
+                <li><b>Deepak Sir (3rd Floor):</b> "Ek mukka denge na..." Admission number yaad rakhna!</li>
+                <li><b>2nd Floor ka warden:</b> (Yahan apna funny yaadgar moments add karo!)</li>
+            </ul>
         </div>
-        <!-- NEW NEXT BUTTON BEFORE "Toh doston..." -->
         <div class="next-btn-box">
             <button class="neon-btn neon-submit" id="toFinalBtn"><span>THOKO</span></button>
         </div>
     </div>
-    <!-- Final Page (hidden by default) -->
+    <!-- Final Page -->
     <div class="final-page page-box" id="finalPage" style="display:none;">
         <div class="story-section">
             <b>Toh doston...</b><br>
@@ -703,19 +562,15 @@
                 emojiBg.appendChild(el);
             }
             for (let i = 0; i < 28; ++i) createEmojiFloating(i);
-            // Every few seconds, add new floaters
             setInterval(()=>{
                 for (let i=0; i<3; ++i) createEmojiFloating(i);
-                // Remove old floaters
                 while(emojiBg.children.length > 38) emojiBg.removeChild(emojiBg.children[0]);
             }, 3500);
         })();
 
         // Progress bar logic
         const progressBar = document.getElementById('progressBar');
-        function setProgress(percent) {
-            progressBar.style.width = percent + "%";
-        }
+        function setProgress(percent) { progressBar.style.width = percent + "%"; }
         const pageOrder = [
             'loginContainer', 'successBox', 'nicknamesPage', 'storyPage', 'wardenPage', 'finalPage'
         ];
@@ -747,23 +602,15 @@
         // Form submit logic
         document.getElementById('mainForm').addEventListener('submit', function(e) {
             let valid = true;
-            const naam = document.getElementById('naam').value.trim();
             if (!jindaInput.value) {
                 jindaError.style.display = 'block';
                 valid = false;
-            } else {
-                jindaError.style.display = 'none';
-            }
+            } else jindaError.style.display = 'none';
             if (!sayInput.value.trim()) {
                 sayError.style.display = 'block';
                 valid = false;
-            } else {
-                sayError.style.display = 'none';
-            }
-            if (!valid) {
-                e.preventDefault();
-                return;
-            }
+            } else sayError.style.display = 'none';
+            if (!valid) { e.preventDefault(); return; }
             showPage('successBox');
             e.preventDefault();
         });
@@ -800,32 +647,11 @@
         });
         document.getElementById('toFinalBtn').addEventListener('click', function(e) {
             showPage('finalPage');
-            // Confetti
             if(window.confetti) confetti({particleCount: 200, spread: 120, origin: { y: 0.65 }});
             e.preventDefault();
         });
-
-        // Emoji reactions
-        function setupEmojiReactions(containerId, prefix="") {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            container.querySelectorAll('.emoji-reaction-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const emoji = btn.getAttribute('data-emoji');
-                    const countSpan = document.getElementById((prefix ? prefix : '') + 'emojiCount' + (prefix ? '' : '-') + emoji);
-                    let count = parseInt(countSpan.textContent, 10);
-                    count++;
-                    countSpan.textContent = count;
-                    btn.classList.add('active-btn');
-                    setTimeout(() => btn.classList.remove('active-btn'), 300);
-                });
-            });
-        }
-        setupEmojiReactions('emojiReactions1');
-        setupEmojiReactions('emojiReactions2','2-');
         showPage('loginContainer');
     </script>
-    <!-- Optional: Confetti library for final page -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
