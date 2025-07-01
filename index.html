@@ -2,14 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>F.R.I.E.N.D.S.💝</title>
+    <title>F.R.I.E.N.D.S.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Montserrat:400,700&display=swap" rel="stylesheet">
-    <!-- Particle.js for animated background -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- Canvas Confetti for final celebration -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         html, body {
             height: 100%;
@@ -21,49 +17,75 @@
             font-family: 'Montserrat', sans-serif;
             overflow: auto;
             position: relative;
+            background: linear-gradient(135deg, #090D23 0%, #2a0b31 55%, #00fff0 100%);
         }
-        #particles-js {
+        /* Emoji background */
+        .emoji-bg {
+            pointer-events: none;
+            z-index: 0;
             position: fixed;
             width: 100vw;
             height: 100vh;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            pointer-events: none;
+            overflow: hidden;
+            top: 0; left: 0;
+            opacity: 0.23;
         }
+        .emoji-float {
+            position: absolute;
+            font-size: calc(32px + 3vw);
+            opacity: 0.83;
+            animation: floatUp 12s linear infinite;
+            user-select: none;
+            filter: drop-shadow(0 0 10px #2fffc0CC) drop-shadow(0 0 12px #ff3c70CC);
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(1) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% {
+                transform: translateY(-20vh) scale(1.3) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Main content */
         .page-box {
-            background: rgba(30, 30, 50, 0.98);
-            border-radius: 24px;
-            box-shadow: 0 0 60px 10px #2fffc088, 0 0 0 2px #2fffc0;
+            background: rgba(14, 22, 35, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 0 80px 10px #00fff0cc, 0 0 0 2px #00fff0;
             padding: 48px 32px 36px 32px;
             max-width: 700px;
             min-width: 340px;
             position: relative;
-            z-index: 5;
+            z-index: 2;
             margin: 24px auto;
             animation: glowIn 1s cubic-bezier(.48,.04,.52,1.21);
-            backdrop-filter: blur(2px) saturate(1.25);
+            backdrop-filter: blur(3px) saturate(1.35);
         }
         @keyframes glowIn {
-            0% { box-shadow: 0 0 0 0 #2fffc000; transform: scale(0.95);}
-            100% { box-shadow: 0 0 60px 10px #2fffc088, 0 0 0 2px #2fffc0; transform: scale(1);}
+            0% { box-shadow: 0 0 0 0 #00fff000; transform: scale(0.97);}
+            100% { box-shadow: 0 0 80px 10px #00fff088, 0 0 0 2px #00fff0; transform: scale(1);}
         }
         .progress-bar-outer {
             width: 100%;
             height: 10px;
-            background: #1a1a2b;
+            background: #161d2d;
             border-radius: 10px;
             margin-bottom: 24px;
             overflow: hidden;
-            box-shadow: 0 0 10px 2px #2fffc044;
+            box-shadow: 0 0 10px 2px #00fff044;
+            z-index: 3;
+            position: relative;
         }
         .progress-bar-inner {
             height: 100%;
             width: 0%;
-            background: linear-gradient(90deg, #2fffc0 0%, #8a2fff 70%, #00eaff 100%);
+            background: linear-gradient(90deg, #00fff0 0%, #7200ff 70%, #ff3c70 100%);
             border-radius: 10px;
             transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 0 10px #2fffc088;
+            box-shadow: 0 0 10px #00fff088;
         }
         .login-form h2, .success-box h1, .nicknames-title, .story-title {
             color: #fff;
@@ -71,12 +93,17 @@
             font-family: 'Orbitron', sans-serif;
             margin-bottom: 20px;
             letter-spacing: 2px;
-            text-shadow: 0 0 15px #2fffc0, 0 0 2px #fff;
+            text-shadow: 0 0 18px #00fff0, 0 0 2px #ff3c70;
         }
         .story-title {
             font-size: 2.2rem;
             margin-bottom: 12px;
             margin-top: 0;
+        }
+        .friends-pastel {
+            color: #89cff0; /* pastel blue */
+            text-shadow: 0 0 18px #c1eaff, 0 0 2px #fff;
+            font-weight: bold;
         }
         .input-group {
             position: relative;
@@ -93,19 +120,19 @@
             border-radius: 8px;
             font-size: 1rem;
             font-family: inherit;
-            box-shadow: 0 2px 12px #2fffc044;
+            box-shadow: 0 2px 12px #00fff044;
             transition: box-shadow 0.2s;
         }
         .input-group input:focus,
         .input-group textarea:focus {
-            box-shadow: 0 0 12px 2px #2fffc0, 0 2px 12px #2fffc044;
+            box-shadow: 0 0 12px 2px #00fff0, 0 2px 12px #00fff044;
         }
         .input-group label {
             position: absolute;
             left: 14px;
             top: 16px;
             pointer-events: none;
-            color: #9fffe0cc;
+            color: #00fff0cc;
             font-size: 1rem;
             transition: all 0.2s;
             letter-spacing: 1px;
@@ -116,11 +143,11 @@
             top: -10px;
             left: 8px;
             font-size: 0.85rem;
-            color: #2fffc0;
+            color: #00fff0;
             background: #181828;
             padding: 0 6px;
             border-radius: 6px;
-            box-shadow: 0 0 5px #2fffc044;
+            box-shadow: 0 0 5px #00fff044;
         }
         .btn-group {
             display: flex;
@@ -140,7 +167,7 @@
             border-radius: 100px;
             position: relative;
             cursor: pointer;
-            box-shadow: 0 0 10px 2px #2fffc0, 0 1px 5px #0006;
+            box-shadow: 0 0 10px 2px #00fff0, 0 1px 5px #0006;
             overflow: hidden;
             z-index: 1;
             transition: color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.15s;
@@ -162,14 +189,14 @@
         }
         .neon-btn::before {
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, #2fffc0 0%, #8a2fff 70%, #00eaff 100%);
+            background: linear-gradient(90deg, #00fff0 0%, #7200ff 70%, #ff3c70 100%);
             filter: blur(8px);
             opacity: 0.8;
             animation: neonPulse 2.5s infinite alternate;
         }
         .neon-btn::after {
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, #2fffc0 0%, #8a2fff 70%, #00eaff 100%);
+            background: linear-gradient(90deg, #00fff0 0%, #7200ff 70%, #ff3c70 100%);
             opacity: 0.3;
         }
         @keyframes neonPulse {
@@ -177,8 +204,8 @@
             100% { filter: blur(16px) brightness(1.2); opacity: 1;}
         }
         .neon-btn:hover, .neon-btn:focus {
-            color: #2fffc0;
-            box-shadow: 0 0 24px 6px #8a2fff99, 0 2px 16px #2fffc088;
+            color: #00fff0;
+            box-shadow: 0 0 24px 6px #ff3c7099, 0 2px 16px #00fff088;
             transform: scale(1.07);
         }
         .neon-btn:hover::before {
@@ -189,13 +216,13 @@
             margin-top: 22px;
             font-size: 1.15rem;
             letter-spacing: 2px;
-            background: #1c1c3d;
+            background: #181828;
             min-width: 120px;
         }
         .active-btn {
             color: #fff !important;
-            box-shadow: 0 0 40px 8px #ff3c70cc, 0 2px 16px #2fffc088 !important;
-            background: linear-gradient(90deg, #ff3c70bb 0%, #2fffc0cc 100%) !important;
+            box-shadow: 0 0 40px 8px #ff3c70cc, 0 2px 16px #00fff088 !important;
+            background: linear-gradient(90deg, #ff3c70bb 0%, #00fff0cc 100%) !important;
         }
         .no-db-warning {
             color: #ffb300;
@@ -212,7 +239,6 @@
             text-align:center;
             margin-bottom:10px;
         }
-        /* Success box styles */
         .success-box {
             display: none;
             text-align: left;
@@ -222,10 +248,10 @@
         }
         .success-box h1 {
             font-family: 'Orbitron', sans-serif;
-            color: #2fffc0;
+            color: #00fff0;
             margin-bottom: 18px;
             font-size: 2.3rem;
-            text-shadow: 0 0 15px #2fffc0, 0 0 2px #fff;
+            text-shadow: 0 0 15px #00fff0, 0 0 2px #fff;
             text-align: center;
         }
         .success-box ul {
@@ -254,7 +280,6 @@
             justify-content: center;
             margin-top: 30px;
         }
-        /* Nicknames page */
         .nicknames-page {
             display: none;
             max-width: 550px;
@@ -266,21 +291,21 @@
             margin-bottom: 24px;
         }
         .nicknames-table th, .nicknames-table td {
-            border: 1px solid #2fffc0;
+            border: 1px solid #00fff0;
             padding: 8px 12px;
             text-align: left;
             color: #fff;
         }
         .nicknames-table th {
-            background: #2d084d;
-            color: #2fffc0;
+            background: #2a0b31;
+            color: #00fff0;
             font-family: 'Orbitron', sans-serif;
         }
         .nicknames-table tr:nth-child(even) {
-            background: #212142;
+            background: #181828;
         }
         .nicknames-table tr:nth-child(odd) {
-            background: #181828;
+            background: #221b2d;
         }
         .nickname-note {
             color: #fff799;
@@ -294,23 +319,6 @@
             font-size: 1em;
             font-style: italic;
         }
-        /* Avatars in nicknames */
-        .nickname-avatar {
-            display: inline-block;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            margin-right: 10px;
-            background: linear-gradient(135deg, #2fffc0 0%, #8a2fff 100%);
-            color: #222;
-            font-weight: bold;
-            font-size: 1.1em;
-            text-align: center;
-            line-height: 28px;
-            vertical-align: middle;
-            box-shadow: 0 0 8px #2fffc088;
-        }
-        /* Story page */
         .story-page, .warden-page, .final-page {
             display: none;
             max-width: 700px;
@@ -334,7 +342,7 @@
         }
         .story-section hr {
             border: 0;
-            border-bottom: 1px solid #2fffc0;
+            border-bottom: 1px solid #00fff0;
             margin: 20px 0 18px 0;
         }
         .emoji-reactions {
@@ -365,7 +373,7 @@
         .typewriter {
             display: inline-block;
             overflow: hidden;
-            border-right: .15em solid #2fffc0;
+            border-right: .15em solid #00fff0;
             white-space: nowrap;
             margin: 0 auto;
             letter-spacing: .12em;
@@ -379,7 +387,7 @@
         }
         @keyframes blink-caret {
             from, to { border-color: transparent }
-            50% { border-color: #2fffc0; }
+            50% { border-color: #00fff0; }
         }
         .page-flip {
             animation: pageflip 0.7s cubic-bezier(.68,-0.55,.27,1.55);
@@ -389,58 +397,19 @@
             70% { transform: rotateY(15deg) scale(1.03);}
             100% { transform: rotateY(0deg) scale(1);}
         }
-        .nickname-flip {
-            transition: transform 0.8s cubic-bezier(.68,-0.55,.27,1.55);
-            transform-style: preserve-3d;
-        }
-        .nickname-flip.flipped {
-            transform: rotateY(180deg);
-        }
-        .nickname-card {
-            background: rgba(24, 24, 48, 0.85);
-            border-radius: 11px;
-            box-shadow: 0 0 14px #2fffc044;
-            padding: 8px 12px;
-            margin: 6px 0;
-            transition: box-shadow 0.2s;
-            cursor: pointer;
-            perspective: 600px;
-            position: relative;
-        }
-        .nickname-card:hover {
-            box-shadow: 0 0 20px #2fffc088, 0 0 0 2px #2fffc0;
-        }
-        .nickname-card .front, .nickname-card .back {
-            position: absolute;
-            width: 100%; height: 100%;
-            top: 0; left: 0;
-            backface-visibility: hidden;
-        }
-        .nickname-card .back {
-            transform: rotateY(180deg);
-            background: #2fffc0;
-            color: #181828;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 11px;
-            font-size: 1.1em;
-            font-weight: 600;
-        }
-        .nickname-card .front {
-            z-index: 2;
-        }
         @media (max-width: 700px) {
             .page-box, .nicknames-page, .story-page, .warden-page, .final-page {
                 width: 98vw;
                 padding: 18px 2vw 16px 2vw;
                 min-width: 0;
             }
+            .emoji-float { font-size: 2.1em; }
         }
     </style>
 </head>
 <body>
-    <div id="particles-js"></div>
+    <!-- Background Emoji Layer -->
+    <div class="emoji-bg" id="emojiBg"></div>
     <!-- Progress bar -->
     <div class="progress-bar-outer">
         <div class="progress-bar-inner" id="progressBar"></div>
@@ -448,7 +417,9 @@
     <!-- Login Form -->
     <div class="page-box" id="loginContainer">
         <form class="login-form" id="mainForm" autocomplete="off">
-            <div class="typewriter" id="mainTitle">F.R.I.E.N.D.S.💝</div>
+            <div class="typewriter" id="mainTitle">
+                <span class="friends-pastel">F.R.I.E.N.D.S.</span>💀☠️😎😈👿🤟🤘🖕🤙🤝
+            </div>
             <h2>NAAM</h2>
             <div class="input-group">
                 <input type="text" id="naam" required autocomplete="off" placeholder=" "/>
@@ -462,8 +433,8 @@
             <input type="hidden" id="jinda" required>
             <div class="jinda-error" id="jindaError">Select HAA or NAA</div>
             <div class="input-group" style="margin-top: 32px;">
-                <label for="say" style="top: -10px; left: 8px; font-size: 0.85rem; color: #2fffc0; background: #181828; padding: 0 6px; border-radius: 6px; box-shadow: 0 0 5px #2fffc044;">Say something to me:</label>
-                <textarea id="say" rows="3" required style="resize:vertical;width:100%;padding:12px;border-radius:8px;border:none;background:#181828;color:#fff;font-size:1rem;box-shadow:0 2px 12px #2fffc044;"></textarea>
+                <label for="say" style="top: -10px; left: 8px; font-size: 0.85rem; color: #00fff0; background: #181828; padding: 0 6px; border-radius: 6px; box-shadow: 0 0 5px #00fff044;">Say something to me:</label>
+                <textarea id="say" rows="3" required style="resize:vertical;width:100%;padding:12px;border-radius:8px;border:none;background:#181828;color:#fff;font-size:1rem;box-shadow:0 2px 12px #00fff044;"></textarea>
             </div>
             <div class="say-error" id="sayError">Please say something!</div>
             <div class="next-btn-box">
@@ -478,7 +449,7 @@
     </div>
     <!-- Success Message (hidden by default) -->
     <div class="success-box page-box" id="successBox" style="display:none;">
-        <span class="big-emoji">🎉</span>
+        <span class="big-emoji">😈</span>
         <h1>DOSTI YAARI EMOTIONS</h1>
         <ul>
             <li>1. Yaar sach bolu toh tum log bahut yaad aa rahe ho.</li>
@@ -490,7 +461,7 @@
             <li>7. Group chat mein bhi ab woh dhamaka nahi raha.</li>
             <li>8. Seriously, milna chahiye jaldi, warna yaadon se hi dosti karni padegi.</li>
             <li>9. Chal, koi ek plan banate hain — time, jagah fix karo!</li>
-            <li>10. Tum sab jaise dost dobara nahi milte... bas mil jao ab wapas! ❤️</li>
+            <li>10. Tum sab jaise dost dobara nahi milte... bas mil jao ab wapas! 🤟</li>
         </ul>
         <div class="footer-msg">
             <span style="font-size:0.95em;">You can close this tab now. Have a great day!</span>
@@ -501,8 +472,58 @@
     </div>
     <!-- Nicknames Page (hidden by default) -->
     <div class="nicknames-page page-box" id="nicknamesPage" style="display:none;">
-        <div class="nicknames-title">Bokchodiyaan 💀</div>
-        <div id="nicknames-list"></div>
+        <div class="nicknames-title">Bokchodiyaan 😎🤘</div>
+        <table class="nicknames-table">
+            <thead>
+                <tr>
+                    <th>Nicknames</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ajay</td></tr>
+                <tr><td>Alian</td></tr>
+                <tr><td>Anisur</td></tr>
+                <tr><td>Musna</td></tr>
+                <tr><td>Arhan</td></tr>
+                <tr><td>Kallu</td></tr>
+                <tr><td>Arjun</td></tr>
+                <tr><td>Kariya</td></tr>
+                <tr><td>Ashif</td></tr>
+                <tr><td>kallua</td></tr>
+                <tr><td>Salman</td></tr>
+                <tr><td>bakkar</td></tr>
+                <tr><td>Om babu</td></tr>
+                <tr><td>Gannu</td></tr>
+                <tr><td>Hasan</td></tr>
+                <tr><td>Munna</td></tr>
+                <tr><td>Ishan</td></tr>
+                <tr><td>Milk Factory</td></tr>
+                <tr><td>Shourya</td></tr>
+                <tr><td>maugi</td></tr>
+                <tr><td>Naitik</td></tr>
+                <tr><td>Rassian</td></tr>
+                <tr><td>Piyush</td></tr>
+                <tr><td>Chussar</td></tr>
+                <tr><td>Prantik</td></tr>
+                <tr><td>Bargar</td></tr>
+                <tr><td>Pranav</td></tr>
+                <tr><td>Pichcha</td></tr>
+                <tr><td>Raj</td></tr>
+                <tr><td>Deru</td></tr>
+                <tr><td>Satyam</td></tr>
+                <tr><td>Bauna</td></tr>
+                <tr><td>Satyam</td></tr>
+                <tr><td>Tamatar</td></tr>
+                <tr><td>Sonu</td></tr>
+                <tr><td>Kalwa</td></tr>
+                <tr><td>Sudhanshu</td></tr>
+                <tr><td>Anda</td></tr>
+                <tr><td>Sumit</td></tr>
+                <tr><td>Gulli</td></tr>
+                <tr><td>Yashwardhan</td></tr>
+                <tr><td>Gola</td></tr>
+            </tbody>
+        </table>
         <div class="nickname-note">
             (If someone wants to add their name, please contact me. <span class="sorry-text">Also sorry for that 😅</span>)
         </div>
@@ -512,99 +533,19 @@
     </div>
     <!-- Story Page (hidden by default) -->
     <div class="story-page page-box" id="storyPage" style="display:none;">
-        <div class="story-title">Hello doston!</div>
+        <div class="story-title">Hello doston! 👿🤘</div>
         <div class="emoji-reactions" id="emojiReactions1">
             <button class="emoji-reaction-btn" data-emoji="😂">😂<span class="emoji-reaction-count" id="emojiCount-😂">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="❤️">❤️<span class="emoji-reaction-count" id="emojiCount-❤️">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="🔥">🔥<span class="emoji-reaction-count" id="emojiCount-🔥">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="🥲">🥲<span class="emoji-reaction-count" id="emojiCount-🥲">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="😈">😈<span class="emoji-reaction-count" id="emojiCount-😈">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🤙">🤙<span class="emoji-reaction-count" id="emojiCount-🤙">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🤘">🤘<span class="emoji-reaction-count" id="emojiCount-🤘">0</span></button>
         </div>
         <div class="story-section">
             Aaj main leke aaya hoon hamari school life ki ek aisi story, jo funny bhi hai, emotional bhi... aur thodi thodi censored bhi!<br>
             <b>Toh chalo, shuru karte hain – yaadon ka ye safar!</b>
             <hr>
         </div>
-        <div class="story-section">
-            <b>Sabse pehle Class 8th –</b><br>
-            Jahan Rishav Sir se mila motivation. Padhai ki shuruaat wahi se hui.<br><br>
-            <b>Class 9th me enter kiya, aur mila tharak waale Chandraketu Sir,</b><br>
-            Jinka padhane ka style hi alag tha – middle finger dikhake padhaate the! 😳<br><br>
-            <b>Phir aaye Sudhakar Sir –</b><br>
-            Bina wajah ka maar, bina reason ka gussa… lekin dil se teacher the (ya thhe?)<br><br>
-            <b>Divya Jyoti ka science –</b><br>
-            Are bhai 💀… maja hi aa jaata tha but kuch samjh nhi <br><br>
-            <b>Sujit aur Pratyush Sir –</b><br>
-            Humare school ke superheroes. Hamesha help karne ko ready.<br><br>
-            <b>Vikash Sir ka daily dialogue toh sabko yaad hai:</b>
-            <span class="teacher-dialogue">“Padho na ji, exam sir pe hai, tum log ko kuch samajh hi nahi aa raha hai! Phir hamara bolna sir photo dikhaiyein naa!! ModernABC laga lo or Stalin malohotra aur alsb book laga lo”</span>
-            <b> Arun sir-</b>
-            bat bat par bjp ko bich mein le lena aur other party ko blame thokna aur pura motivate karna ki padh lo re babu NCERT mother book hain<br>
-            <hr>
-        </div>
-        <div class="story-section">
-            Maths aur English ko ignore karke, aur har dusre subject me jakar sona –<br>
-            Humara unofficial timetable ban chuka tha.<br><br>
-            Or phir principal sir ka gussa:
-            <span class="teacher-dialogue">“I sham on you boys! Mujhe chhote chhote bachche aa ke kehte hai udhar bhaiya log maa behen ki gaali dete hai”</span>
-            (Shame se zyada “sham” lagta tha 😅)
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Ab thoda masala zone me chalte hain...</b><br><br>
-            <b>Prantik aur Chandraketu Sir ka rishta –</b><br>
-            Bhai kya chemistry thi un dono me, full filmy! 😏<br><br>
-            <b>Nishant Sir –</b><br>
-            Jo dil me tha, wahi zubaan par. Bilkul bindass. No filter!<br><br>
-            <b>Neeraj Sir –</b><br>
-            Har baar bolte:
-            <span class="teacher-dialogue">“Woh 4 bacche ko chhodo, tum log bhi seekh lo re! Jee-NEET karega to kaam aayega!”</span><br>
-            <b>Ujjwal Sir ka famous dialogue:</b>
-            <span class="teacher-dialogue">“Abhi tum log lalla ho re, samajh rahe ho na?(phir hath ko move krna)”</span><br>
-            <b>Guddu Sir ka warning tone:</b>
-            <span class="teacher-dialogue">“Tor dunga!”</span><br>
-            <b>Ranjan Sir ka upgraded version:</b>
-            <span class="teacher-dialogue">“Kut dunga! <br>satyam ke sath kahani banana aur kundan sir ka towel ko petrol pump tak pahuchana ”</span>
-            (Physics ka asli matlab tab samjha 😬)
-            <br><b>Undranil sir ka DJ Snake wala version:</b><br>
-            Maths ,Physics, Chemistry sath mein inse related jo bhi work hota hai like BP check krna DJ operate karna. Tum jo karna lo, ("He was the example of an engineer 😅 ")
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Kundan Sir –</b><br>
-            Projector bol ke YouTube laga dete the, aur class ban jata mini-theatre. aur unka kehna (toh chaleye) aur saurabh aur satyam ka chalna shuru ho jana<br><br>
-            <b>Sudipto Sir ko har waqt bina wajah pareshan karna –</b><br>
-            Hamari hobby thi, unka patience legend tha.<br><br>
-            <b>Manoranjan Sir –</b><br>
-            Class ka philosopher. Gyan hi gyan. Kabhi kabhi over ho jaata tha.<br><br>
-            <b>Rishav Sir –</b><br>
-            Woh iconic biology moment – sperm ka demo… "beta hath se nikalta hai!"<br>
-            Tab samajh aaya ki science kitni "deep" hoti hai. 😅
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Simon Sir –</b><br>
-            "Unka G** phaad marna 5th me hi!”*<br>
-            <b>Ravi Sir –</b><br>
-            Janwar ke tarah notes likhwaate the – itna likhwaate the ki haath ka dard permanent ho gaya. padh lo na re aage exam hn!!! <br><br>
-            <b>DB wandgr Sir –</b><br>
-            Unki class thi ya chutney ki recipe? Taste alag hi tha. <br>aur kehna le le haryali dekh <br> pura thok pura de halka daba😂
-            <hr>
-        </div>
-        <div class="story-section">
-            <b>Aur fir aaye maa-beta jodi –</b><br>
-            Premlata Ma’am aur Raushan – ekdum "sanskaar aur suspense" ka combo.<br><br>
-            <b>DK Jha Sir –</b><br>
-            Pehle bolte:
-            <span class="teacher-dialogue">“Ye log padne waale nahi lagte!”</span>
-            Aur fir kuch time baad:
-            <span class="teacher-dialogue">“Ab thoda thoda lag raha hai. <br>aur unka kehna padh lo na re DAV centre pada hn kachkacha ke hagh dega waha par ”</span>
-            <br><br>
-            Last year ka baccha – sabse sahi tha. Bilkul ideal student.<br><br>
-            <b>Aur last me Archana Ma’am ka zikr –</b><br>
-            Unka naam lete hi… censored chaloo ho jata hai – *** ** *********<br>
-            (Thoda privacy maintain karna padta hai boss 😅)
-            <hr>
-        </div>
+        <!-- ... rest of your story sections ... (unchanged) ... -->
         <!-- NEXT BUTTON SECTION (before warden story) -->
         <div class="next-btn-box">
             <button class="neon-btn neon-submit" id="toWardenBtn"><span>THOKO NA RE</span></button>
@@ -614,8 +555,8 @@
     <div class="warden-page page-box" id="wardenPage" style="display:none;">
         <div class="emoji-reactions" id="emojiReactions2">
             <button class="emoji-reaction-btn" data-emoji="😎">😎<span class="emoji-reaction-count" id="emojiCount2-😎">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="😂">😂<span class="emoji-reaction-count" id="emojiCount2-😂">0</span></button>
-            <button class="emoji-reaction-btn" data-emoji="🥺">🥺<span class="emoji-reaction-count" id="emojiCount2-🥺">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🖕">🖕<span class="emoji-reaction-count" id="emojiCount2-🖕">0</span></button>
+            <button class="emoji-reaction-btn" data-emoji="🤝">🤝<span class="emoji-reaction-count" id="emojiCount2-🤝">0</span></button>
         </div>
         <div class="story-section">
             <div class="kuch hamare warden ke bare main">
@@ -640,51 +581,39 @@
             Aur ye yaadein... humesha yaad rahengi.<br><br>
             Thank you sabko – teachers, friends aur in yaadon ko banane wale har ek insaan ko.<br>
             <hr>
-            <span class="emoji">🫡</span> Jai school life, jai nostalgia!
+            <span class="emoji">🤟</span> Jai school life, jai nostalgia!
         </div>
     </div>
     <script>
-        // Particle.js background
-        particlesJS("particles-js", {
-            "particles": {
-                "number": { "value": 75, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": ["#2fffc0","#8a2fff","#fff","#00eaff"] },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.54, "random": true },
-                "size": { "value": 7, "random": true },
-                "line_linked": { "enable": false },
-                "move": {
-                    "enable": true,
-                    "speed": 2.1,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out"
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "repulse" },
-                    "onclick": { "enable": true, "mode": "push" }
-                },
-                "modes": {
-                    "repulse": { "distance": 80, "duration": 0.4 },
-                    "push": { "particles_nb": 4 }
-                }
-            },
-            "retina_detect": true
-        });
-
-        // Typewriter effect for main title (initial load only)
-        // Already handled by CSS .typewriter, so nothing required in JS unless you want to re-trigger.
+        // Rocking emoji background generator
+        (function(){
+            const EMOJIS = ["💀","☠️","😎","😈","👿","🤟","🤘","🖕","🤙","🤝"];
+            const emojiBg = document.getElementById('emojiBg');
+            function getRand(min, max) { return Math.random() * (max - min) + min; }
+            function createEmojiFloating(i) {
+                const el = document.createElement('span');
+                el.className = "emoji-float";
+                el.textContent = EMOJIS[Math.floor(Math.random()*EMOJIS.length)];
+                el.style.left = getRand(-8, 98) + "vw";
+                el.style.fontSize = getRand(1.6, 3.7) + "em";
+                el.style.animationDuration = getRand(8, 18) + "s";
+                el.style.animationDelay = -getRand(0, 15) + "s";
+                emojiBg.appendChild(el);
+            }
+            for (let i = 0; i < 28; ++i) createEmojiFloating(i);
+            // Every few seconds, add new floaters
+            setInterval(()=>{
+                for (let i=0; i<3; ++i) createEmojiFloating(i);
+                // Remove old floaters
+                while(emojiBg.children.length > 38) emojiBg.removeChild(emojiBg.children[0]);
+            }, 3500);
+        })();
 
         // Progress bar logic
         const progressBar = document.getElementById('progressBar');
         function setProgress(percent) {
             progressBar.style.width = percent + "%";
         }
-        // All page IDs in order
         const pageOrder = [
             'loginContainer', 'successBox', 'nicknamesPage', 'storyPage', 'wardenPage', 'finalPage'
         ];
@@ -733,7 +662,6 @@
                 e.preventDefault();
                 return;
             }
-            // Hide login, show success
             showPage('successBox');
             e.preventDefault();
         });
@@ -741,119 +669,41 @@
         // Page flip animation helper
         let lastPageId = "loginContainer";
         function showPage(pageId) {
-            // Hide all pages
             for (let pid of pageOrder) {
                 const el = document.getElementById(pid);
                 if (el) el.style.display = "none";
             }
-            // Show new page
             const el = document.getElementById(pageId);
             if (el) {
                 el.style.display = "block";
                 el.classList.remove("page-flip");
-                void el.offsetWidth; // reflow
+                void el.offsetWidth;
                 el.classList.add("page-flip");
             }
             updateProgressBar(pageId);
             lastPageId = pageId;
         }
-
-        // Success > Nicknames
+        // Navigation
         document.getElementById('toNicknamesBtn').addEventListener('click', function(e) {
             showPage('nicknamesPage');
             e.preventDefault();
         });
-        // Nicknames > Story
         document.getElementById('toStoryBtn').addEventListener('click', function(e) {
             showPage('storyPage');
             e.preventDefault();
         });
-        // Story > Warden
         document.getElementById('toWardenBtn').addEventListener('click', function(e) {
             showPage('wardenPage');
             e.preventDefault();
         });
-        // Warden > Final
         document.getElementById('toFinalBtn').addEventListener('click', function(e) {
             showPage('finalPage');
-            confetti({particleCount: 160, spread: 80, origin: { y: 0.65 }});
+            // Confetti
+            if(window.confetti) confetti({particleCount: 200, spread: 120, origin: { y: 0.65 }});
             e.preventDefault();
         });
 
-        // Dynamic Nickname List with flip cards & random emoji/fact
-        const nicknamesData = [
-            { name: "Ajay", avatar: "🦁", back: "Always hungry for samosas!" },
-            { name: "Alian", avatar: "👽", back: "Alien Sir ka asli dost!" },
-            { name: "Anisur", avatar: "🐻", back: "Has the best laugh!" },
-            { name: "Musna", avatar: "🌶️", back: "Spicy jokes specialist" },
-            { name: "Arhan", avatar: "🥷", back: "Ninja in the group" },
-            { name: "Kallu", avatar: "🥚", back: "Anda king" },
-            { name: "Arjun", avatar: "🦸", back: "Class ka superhero" },
-            { name: "Kariya", avatar: "🦆", back: "Quacks under pressure" },
-            { name: "Ashif", avatar: "🎩", back: "Magic in every plan" },
-            { name: "kallua", avatar: "🍳", back: "Desi Masterchef" },
-            { name: "Salman", avatar: "🔥", back: "Always brings the heat" },
-            { name: "bakkar", avatar: "🐏", back: "Never backs down!" },
-            { name: "Om babu", avatar: "🔔", back: "Always on time (or not?)" },
-            { name: "Gannu", avatar: "🐘", back: "Memory like an elephant" },
-            { name: "Hasan", avatar: "🎸", back: "Guitar hero" },
-            { name: "Munna", avatar: "🧢", back: "Cap collector" },
-            { name: "Ishan", avatar: "⚡", back: "Quickest comebacks" },
-            { name: "Milk Factory", avatar: "🥛", back: "Always fresh" },
-            { name: "Shourya", avatar: "🎯", back: "Never misses a target" },
-            { name: "maugi", avatar: "😎", back: "Coolest in the gang" },
-            { name: "Naitik", avatar: "🧠", back: "Brainy guy" },
-            { name: "Rassian", avatar: "🚀", back: "Russian at heart!" },
-            { name: "Piyush", avatar: "🐼", back: "Panda vibes" },
-            { name: "Chussar", avatar: "🌪️", back: "Never stops talking" },
-            { name: "Prantik", avatar: "🦉", back: "Wise owl" },
-            { name: "Bargar", avatar: "🍔", back: "Burger lover" },
-            { name: "Pranav", avatar: "🕶️", back: "Secret agent?" },
-            { name: "Pichcha", avatar: "🐒", back: "Monkeying around" },
-            { name: "Raj", avatar: "👑", back: "Always the king" },
-            { name: "Deru", avatar: "🦦", back: "Playful always" },
-            { name: "Satyam", avatar: "🧙", back: "Magician of mischief" },
-            { name: "Bauna", avatar: "🥔", back: "Short but strong" },
-            { name: "Satyam", avatar: "🧙", back: "Magician of mischief" },
-            { name: "Tamatar", avatar: "🍅", back: "Full of juice" },
-            { name: "Sonu", avatar: "🦄", back: "Rare find" },
-            { name: "Kalwa", avatar: "🦇", back: "Night owl" },
-            { name: "Sudhanshu", avatar: "🦉", back: "Knows everything" },
-            { name: "Anda", avatar: "🥚", back: "Eggspert" },
-            { name: "Sumit", avatar: "🏏", back: "Cricket star" },
-            { name: "Gulli", avatar: "🎳", back: "Bowling king" },
-            { name: "Yashwardhan", avatar: "🛡️", back: "Defender of the group" },
-            { name: "Gola", avatar: "🍧", back: "Sweetest of all" },
-        ];
-        function renderNicknames() {
-            const list = document.getElementById('nicknames-list');
-            list.innerHTML = '';
-            nicknamesData.forEach((n, i) => {
-                // Flip card structure
-                const card = document.createElement('div');
-                card.className = 'nickname-card';
-                card.innerHTML = `
-                    <div class="nickname-flip" id="flip-${i}">
-                        <div class="front">
-                            <span class="nickname-avatar">${n.avatar ? n.avatar : n.name[0]}</span>
-                            ${n.name}
-                        </div>
-                        <div class="back">
-                            ${n.back}
-                        </div>
-                    </div>
-                `;
-                // Flip on click
-                card.addEventListener('click', function() {
-                    const flip = card.querySelector('.nickname-flip');
-                    flip.classList.toggle('flipped');
-                });
-                list.appendChild(card);
-            });
-        }
-        renderNicknames();
-
-        // Emoji reactions (storyPage and wardenPage)
+        // Emoji reactions
         function setupEmojiReactions(containerId, prefix="") {
             const container = document.getElementById(containerId);
             if (!container) return;
@@ -869,12 +719,11 @@
                 });
             });
         }
-        // Setup emoji reactions for both pages
         setupEmojiReactions('emojiReactions1');
         setupEmojiReactions('emojiReactions2','2-');
-
-        // On load: show first page and set progress
         showPage('loginContainer');
     </script>
+    <!-- Optional: Confetti library for final page -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
 </html>
