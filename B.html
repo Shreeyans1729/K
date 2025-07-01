@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>F.R.I.E.N.D.S.💝</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(130deg, #140e36 0%, #2d084d 55%, #2fffc0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            overflow: auto;
+        }
+        .page-box {
+            background: rgba(30, 30, 50, 0.98);
+            border-radius: 24px;
+            box-shadow: 0 0 60px 10px #2fffc088, 0 0 0 2px #2fffc0;
+            padding: 48px 32px 36px 32px;
+            max-width: 650px;
+            min-width: 340px;
+            position: relative;
+            z-index: 5;
+            margin: 24px 0;
+            animation: glowIn 1.3s cubic-bezier(.48,.04,.52,1.21);
+        }
+        @keyframes glowIn {
+            0% { box-shadow: 0 0 0 0 #2fffc000; transform: scale(0.95);}
+            100% { box-shadow: 0 0 60px 10px #2fffc088, 0 0 0 2px #2fffc0; transform: scale(1);}
+        }
+        .login-form h2, .success-box h1, .nicknames-title, .story-title {
+            color: #fff;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px #2fffc0, 0 0 2px #fff;
+        }
+        .story-title {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 32px;
+        }
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 16px 12px 12px 12px;
+            border: none;
+            outline: none;
+            background: #181828;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-shadow: 0 2px 12px #2fffc044;
+            transition: box-shadow 0.2s;
+        }
+        .input-group input:focus,
+        .input-group textarea:focus {
+            box-shadow: 0 0 12px 2px #2fffc0, 0 2px 12px #2fffc044;
+        }
+        .input-group label {
+            position: absolute;
+            left: 14px;
+            top: 16px;
+            pointer-events: none;
+            color: #9fffe0cc;
+            font-size: 1rem;
+            transition: all 0.2s;
+            letter-spacing: 1px;
+            background: transparent;
+        }
+        .input-group input:focus + label,
+        .input-group input:not(:placeholder-shown):not(:focus) + label {
+            top: -10px;
+            left: 8px;
+            font-size: 0.85rem;
+            color: #2fffc0;
+            background: #181828;
+            padding: 0 6px;
+            border-radius: 6px;
+            box-shadow: 0 0 5px #2fffc044;
+        }
+        .btn-group {
+            display: flex;
+            flex-direction: row;
+            gap: 24px;
+            margin-bottom: 18px;
+            justify-content: center;
+        }
+        .neon-btn {
+            flex: 1;
+            padding: 14px 0;
+            background: #181828;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: 'Orbitron', sans-serif;
+            border: none;
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 0 10px 2px #2fffc0, 0 1px 5px #0006;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        .neon-btn span {
+            position: relative;
+            z-index: 2;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+        .neon-btn::before, .neon-btn::after {
+            content: '';
+            position: absolute;
+            border-radius: 100px;
+            z-index: 0;
+            transition: opacity 0.2s;
+        }
+        .neon-btn::before {
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, #2fffc0 0%, #8a2fff 70%, #00eaff 100%);
+            filter: blur(8px);
+            opacity: 0.8;
+            animation: neonPulse 2.5s infinite alternate;
+        }
+        .neon-btn::after {
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, #2fffc0 0%, #8a2fff 70%, #00eaff 100%);
+            opacity: 0.3;
+        }
+        @keyframes neonPulse {
+            0% { filter: blur(8px) brightness(1); opacity: 0.8;}
+            100% { filter: blur(16px) brightness(1.2); opacity: 1;}
+        }
+        .neon-btn:hover, .neon-btn:focus {
+            color: #2fffc0;
+            box-shadow: 0 0 24px 6px #8a2fff99, 0 2px 16px #2fffc088;
+        }
+        .neon-btn:hover::before {
+            opacity: 1;
+            filter: blur(12px) brightness(1.3);
+        }
+        .neon-submit {
+            margin-top: 22px;
+            font-size: 1.15rem;
+            letter-spacing: 2px;
+            background: #1c1c3d;
+            min-width: 120px;
+        }
+        .active-btn {
+            color: #fff !important;
+            box-shadow: 0 0 40px 8px #ff3c70cc, 0 2px 16px #2fffc088 !important;
+            background: linear-gradient(90deg, #ff3c70bb 0%, #2fffc0cc 100%) !important;
+        }
+        .no-db-warning {
+            color: #ffb300;
+            padding-top: 26px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            text-shadow: 0 0 6px #181828, 0 0 2px #fff6;
+        }
+        .jinda-error, .say-error {
+            display:none;
+            color:#ff6f6f;
+            font-size:0.95rem;
+            text-align:center;
+            margin-bottom:10px;
+        }
+        /* Success box styles */
+        .success-box {
+            display: none;
+            text-align: left;
+            color: #fff;
+            max-width: 500px;
+            background: rgba(34, 34, 56, 0.99);
+        }
+        .success-box h1 {
+            font-family: 'Orbitron', sans-serif;
+            color: #2fffc0;
+            margin-bottom: 18px;
+            font-size: 2.3rem;
+            text-shadow: 0 0 15px #2fffc0, 0 0 2px #fff;
+            text-align: center;
+        }
+        .success-box ul {
+            padding-left: 20px;
+        }
+        .success-box li {
+            font-size: 1.08rem;
+            margin-bottom: 12px;
+        }
+        .success-box .big-emoji {
+            font-size: 3.2rem;
+            margin-bottom: 22px;
+            display: block;
+            text-align: center;
+        }
+        .footer-msg {
+            margin-top: 30px;
+            color: #ffb300;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            text-shadow: 0 0 6px #181828, 0 0 2px #fff6;
+        }
+        .next-btn-box {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        /* Nicknames page */
+        .nicknames-page {
+            display: none;
+            max-width: 550px;
+            background: rgba(34, 34, 56, 0.99);
+        }
+        .nicknames-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 24px;
+        }
+        .nicknames-table th, .nicknames-table td {
+            border: 1px solid #2fffc0;
+            padding: 8px 12px;
+            text-align: left;
+            color: #fff;
+        }
+        .nicknames-table th {
+            background: #2d084d;
+            color: #2fffc0;
+            font-family: 'Orbitron', sans-serif;
+        }
+        .nicknames-table tr:nth-child(even) {
+            background: #212142;
+        }
+        .nicknames-table tr:nth-child(odd) {
+            background: #181828;
+        }
+        .nickname-note {
+            color: #fff799;
+            font-size: 1.06em;
+            margin-top: 18px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .sorry-text {
+            color: #ed697e;
+            font-size: 1em;
+            font-style: italic;
+        }
+        /* Story page */
+        .story-page, .warden-page {
+            display: none;
+            max-width: 700px;
+            text-align: left;
+            color: #fff;
+            background: rgba(34, 34, 56, 0.99);
+        }
+        .story-section {
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        .story-section .emoji {
+            font-size: 1.3em;
+            vertical-align: middle;
+        }
+        .story-section .teacher-dialogue {
+            font-style: italic;
+            display: block;
+            margin-left: 1.5em;
+            margin-bottom: 4px;
+        }
+        .story-section hr {
+            border: 0;
+            border-bottom: 1px solid #2fffc0;
+            margin: 20px 0 18px 0;
+        }
+        .next-btn-box {
+            margin-top: 18px;
+        }
+        @media (max-width: 700px) {
+            .page-box, .nicknames-page, .story-page, .warden-page {
+                width: 98vw;
+                padding: 18px 2vw 16px 2vw;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="page-box" id="loginContainer">
+        <form class="login-form" id="mainForm" autocomplete="off">
+            <h2>NAAM</h2>
+            <div class="input-group">
+                <input type="text" id="naam" required autocomplete="off" placeholder=" "/>
+                <label for="naam">Naam likho (Enter your name)</label>
+            </div>
+            <h2>JINDA</h2>
+            <div class="btn-group" id="jindaGroup">
+                <button type="button" class="neon-btn" id="haa" tabindex="0">HAA</button>
+                <button type="button" class="neon-btn" id="naa" tabindex="0">NAA</button>
+            </div>
+            <input type="hidden" id="jinda" required>
+            <div class="jinda-error" id="jindaError">Select HAA or NAA</div>
+            <div class="input-group" style="margin-top: 32px;">
+                <label for="say" style="top: -10px; left: 8px; font-size: 0.85rem; color: #2fffc0; background: #181828; padding: 0 6px; border-radius: 6px; box-shadow: 0 0 5px #2fffc044;">Say something to me:</label>
+                <textarea id="say" rows="3" required style="resize:vertical;width:100%;padding:12px;border-radius:8px;border:none;background:#181828;color:#fff;font-size:1rem;box-shadow:0 2px 12px #2fffc044;"></textarea>
+            </div>
+            <div class="say-error" id="sayError">Please say something!</div>
+            <div class="next-btn-box">
+                <button type="submit" class="neon-btn neon-submit" id="submitBtn" style="margin-top:8px;">
+                    <span>THOKO THOKO</span>
+                </button>
+            </div>
+            <div class="no-db-warning">
+                <span>😆 No database here, so your data just vanishes like my motivation on Monday!</span>
+            </div>
+        </form>
+    </div>
+    <!-- Success Message (hidden by default) -->
+    <div class="success-box page-box" id="successBox" style="display:none;">
+        <span class="big-emoji">🎉</span>
+        <h1>DOSTI YAARI EMOTIONS</h1>
+        <ul>
+            <li>1. Yaar sach bolu toh tum log bahut yaad aa rahe ho.</li>
+            <li>2. Aise lagta hai jaise koi part of life missing ho.</li>
+            <li>3. Pehle har din masti hoti thi, ab sirf kaam aur boredom hai.</li>
+            <li>4. Woh choti-choti baatein, lame jokes, aur nonstop bakchodi — sab yaad aati hai.</li>
+            <li>5. Kabhi kabhi toh pura flashback chal jaata hai dimaag mein.</li>
+            <li>6. Tum logon ke bina har plan adhoora lagta hai.</li>
+            <li>7. Group chat mein bhi ab woh dhamaka nahi raha.</li>
+            <li>8. Seriously, milna chahiye jaldi, warna yaadon se hi dosti karni padegi.</li>
+            <li>9. Chal, koi ek plan banate hain — time, jagah fix karo!</li>
+            <li>10. Tum sab jaise dost dobara nahi milte... bas mil jao ab wapas! ❤️</li>
+        </ul>
+        <div class="footer-msg">
+            <span style="font-size:0.95em;">You can close this tab now. Have a great day!</span>
+        </div>
+        <div class="next-btn-box">
+            <button class="neon-btn neon-submit" id="toNicknamesBtn"><span>THOKO THOKO</span></button>
+        </div>
+    </div>
+    <!-- Nicknames Page (hidden by default) -->
+    <div class="nicknames-page page-box" id="nicknamesPage" style="display:none;">
+        <div class="nicknames-title">Bokchodiyaan 💀</div>
+        <table class="nicknames-table">
+            <thead>
+                <tr>
+                    <th>Nicknames</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ajay</td></tr>
+                <tr><td>Alian</td></tr>
+                <tr><td>Anisur</td></tr>
+                <tr><td>Musna</td></tr>
+                <tr><td>Arhan</td></tr>
+                <tr><td>Kallu</td></tr>
+                <tr><td>Arjun</td></tr>
+                <tr><td>Kariya</td></tr>
+                <tr><td>Ashif</td></tr>
+                <tr><td>kallua</td></tr>
+                <tr><td>Salman</td></tr>
+                <tr><td>bakkar</td></tr>
+                <tr><td>Om babu</td></tr>
+                <tr><td>Gannu</td></tr>
+                <tr><td>Hasan</td></tr>
+                <tr><td>Munna</td></tr>
+                <tr><td>Ishan</td></tr>
+                <tr><td>Milk Factory</td></tr>
+                <tr><td>Shourya</td></tr>
+                <tr><td>maugi</td></tr>
+                <tr><td>Naitik</td></tr>
+                <tr><td>Rassian</td></tr>
+                <tr><td>Piyush</td></tr>
+                <tr><td>Chussar</td></tr>
+                <tr><td>Prantik</td></tr>
+                <tr><td>Bargar</td></tr>
+                <tr><td>Pranav</td></tr>
+                <tr><td>Pichcha</td></tr>
+                <tr><td>Raj</td></tr>
+                <tr><td>Deru</td></tr>
+                <tr><td>Satyam</td></tr>
+                <tr><td>Bauna</td></tr>
+                <tr><td>Satyam</td></tr>
+                <tr><td>Tamatar</td></tr>
+                <tr><td>Sonu</td></tr>
+                <tr><td>Kalwa</td></tr>
+                <tr><td>Sudhanshu</td></tr>
+                <tr><td>Anda</td></tr>
+                <tr><td>Sumit</td></tr>
+                <tr><td>Gulli</td></tr>
+                <tr><td>Yashwardhan</td></tr>
+                <tr><td>Gola</td></tr>
+            </tbody>
+        </table>
+        <div class="nickname-note">
+            (If someone wants to add their name, please contact me. <span class="sorry-text">Also sorry for that 😅</span>)
+        </div>
+        <div class="next-btn-box">
+            <button class="neon-btn neon-submit" id="toStoryBtn"><span>NEXT</span></button>
+        </div>
+    </div>
+    <!-- Story Page (hidden by default) -->
+    <div class="story-page page-box" id="storyPage" style="display:none;">
+        <div class="story-title">Hello doston!</div>
+        <div class="story-section">
+            Aaj main leke aaya hoon hamari school life ki ek aisi story, jo funny bhi hai, emotional bhi... aur thodi thodi censored bhi!<br>
+            <b>Toh chalo, shuru karte hain – yaadon ka ye safar!</b>
+            <hr>
+        </div>
+        <div class="story-section">
+            <b>Sabse pehle Class 8th –</b><br>
+            Jahan Rishav Sir se mila motivation. Padhai ki shuruaat wahi se hui.<br><br>
+            <b>Class 9th me enter kiya, aur mila tharak waale Chandraketu Sir,</b><br>
+            Jinka padhane ka style hi alag tha – middle finger dikhake padhaate the! 😳<br><br>
+            <b>Phir aaye Sudhakar Sir –</b><br>
+            Bina wajah ka maar, bina reason ka gussa… lekin dil se teacher the (ya thhe?)<br><br>
+            <b>Divya Jyoti ka science –</b><br>
+            Are bhai 💀… maja hi aa jaata tha but kuch samjh nhi <br><br>
+            <b>Sujit aur Pratyush Sir –</b><br>
+            Humare school ke superheroes. Hamesha help karne ko ready.<br><br>
+            <b>Vikash Sir ka daily dialogue toh sabko yaad hai:</b>
+            <span class="teacher-dialogue">“Padho na ji, exam sir pe hai, tum log ko kuch samajh hi nahi aa raha hai! Phir hamara bolna sir photo dikhaiyein naa!! ModernABC laga lo or Stalin malohotra aur alsb book laga lo”</span>
+            <b> Arun sir-</b>
+            bat bat par bjp ko bich mein le lena aur other party ko blame thokna aur pura motivate karna ki padh lo re babu NCERT mother book hain<br>
+            <hr>
+        </div>
+        <div class="story-section">
+            Maths aur English ko ignore karke, aur har dusre subject me jakar sona –<br>
+            Humara unofficial timetable ban chuka tha.<br><br>
+            Or phir principal sir ka gussa:
+            <span class="teacher-dialogue">“I sham on you boys! Mujhe chhote chhote bachche aa ke kehte hai udhar bhaiya log maa behen ki gaali dete hai”</span>
+            (Shame se zyada “sham” lagta tha 😅)
+            <hr>
+        </div>
+        <div class="story-section">
+            <b>Ab thoda masala zone me chalte hain...</b><br><br>
+            <b>Prantik aur Chandraketu Sir ka rishta –</b><br>
+            Bhai kya chemistry thi un dono me, full filmy! 😏<br><br>
+            <b>Nishant Sir –</b><br>
+            Jo dil me tha, wahi zubaan par. Bilkul bindass. No filter!<br><br>
+            <b>Neeraj Sir –</b><br>
+            Har baar bolte:
+            <span class="teacher-dialogue">“Woh 4 bacche ko chhodo, tum log bhi seekh lo re! Jee-NEET karega to kaam aayega!”</span><br>
+            <b>Ujjwal Sir ka famous dialogue:</b>
+            <span class="teacher-dialogue">“Abhi tum log lalla ho re, samajh rahe ho na?(phir hath ko move krna)”</span><br>
+            <b>Guddu Sir ka warning tone:</b>
+            <span class="teacher-dialogue">“Tor dunga!”</span><br>
+            <b>Ranjan Sir ka upgraded version:</b>
+            <span class="teacher-dialogue">“Kut dunga! <br>satyam ke sath kahani banana aur kundan sir ka towel ko petrol pump tak pahuchana ”</span>
+            (Physics ka asli matlab tab samjha 😬)
+            <br><b>Undranil sir ka DJ Snake wala version:</b><br>
+            Maths ,Physics, Chemistry sath mein inse related jo bhi work hota hai like BP check krna DJ operate karna. Tum jo karna lo, ("He was the example of an engineer 😅 ")
+            <hr>
+        </div>
+        <div class="story-section">
+            <b>Kundan Sir –</b><br>
+            Projector bol ke YouTube laga dete the, aur class ban jata mini-theatre. aur unka kehna (toh chaleye) aur saurabh aur satyam ka chalna shuru ho jana<br><br>
+            <b>Sudipto Sir ko har waqt bina wajah pareshan karna –</b><br>
+            Hamari hobby thi, unka patience legend tha.<br><br>
+            <b>Manoranjan Sir –</b><br>
+            Class ka philosopher. Gyan hi gyan. Kabhi kabhi over ho jaata tha.<br><br>
+            <b>Rishav Sir –</b><br>
+            Woh iconic biology moment – sperm ka demo… "beta hath se nikalta hai!"<br>
+            Tab samajh aaya ki science kitni "deep" hoti hai. 😅
+            <hr>
+        </div>
+        <div class="story-section">
+            <b>Simon Sir –</b><br>
+            "Unka G** phaad marna 5th me hi!”*<br>
+            <b>Ravi Sir –</b><br>
+            Janwar ke tarah notes likhwaate the – itna likhwaate the ki haath ka dard permanent ho gaya. padh lo na re aage exam hn!!! <br><br>
+            <b>DB wandgr Sir –</b><br>
+            Unki class thi ya chutney ki recipe? Taste alag hi tha. <br>aur kehna le le haryali dekh <br> pura thok pura de halka daba😂
+            <hr>
+        </div>
+        <div class="story-section">
+            <b>Aur fir aaye maa-beta jodi –</b><br>
+            Premlata Ma’am aur Raushan – ekdum "sanskaar aur suspense" ka combo.<br><br>
+            <b>DK Jha Sir –</b><br>
+            Pehle bolte:
+            <span class="teacher-dialogue">“Ye log padne waale nahi lagte!”</span>
+            Aur fir kuch time baad:
+            <span class="teacher-dialogue">“Ab thoda thoda lag raha hai. <br>aur unka kehna padh lo na re DAV centre pada hn kachkacha ke hagh dega waha par ”</span>
+            <br><br>
+            Last year ka baccha – sabse sahi tha. Bilkul ideal student.<br><br>
+            <b>Aur last me Archana Ma’am ka zikr –</b><br>
+            Unka naam lete hi… censored chaloo ho jata hai – *** ** *********<br>
+            (Thoda privacy maintain karna padta hai boss 😅)
+            <hr>
+        </div>
+        <!-- NEXT BUTTON SECTION (before warden story) -->
+        <div class="next-btn-box">
+            <button class="neon-btn neon-submit" id="toWardenBtn"><span>NEXT</span></button>
+        </div>
+    </div>
+    <!-- Warden Page (hidden by default) -->
+    <div class="warden-page page-box" id="wardenPage" style="display:none;">
+        <div class="story-section">
+            <div class="kuch hamare warden ke bare main">
+                <b> Suru karte hai 3rd floor se</b><br>
+                ye floor aise bole toh<b>deepak sir</b> ke under aata hn.<br>jinka ek famous dailogue  <span class="teacher-dialogue"> "ek mukka denge na aur aaj tak ke sare batch ke bacche ka nam yad ho ya na par unka admission number pura acche se yad rkhna."</span>
+                <b> Phir aata hai 2nd floor</b><br>
+            </div>
+            <hr>
+        </div>
+        <div class="story-section">
+            <b>Toh doston...</b><br>
+            Ye thi hamari school life ki original web series –<br>
+            Full drama, full comedy, thoda romance, thoda action aur full emotion.<br><br>
+            Teachers ka gussa ho ya unka pyaar, unhone sabko kuch na kuch sikhaya zaroor.<br>
+            Aur ye yaadein... humesha yaad rahengi.<br><br>
+            Thank you sabko – teachers, friends aur in yaadon ko banane wale har ek insaan ko.<br>
+            <hr>
+            <span class="emoji">🫡</span> Jai school life, jai nostalgia!
+        </div>
+    </div>
+    <script>
+        // Button selection logic for HAA/NAA
+        const haaBtn = document.getElementById('haa');
+        const naaBtn = document.getElementById('naa');
+        const jindaInput = document.getElementById('jinda');
+        const jindaError = document.getElementById('jindaError');
+        const sayInput = document.getElementById('say');
+        const sayError = document.getElementById('sayError');
+        haaBtn.addEventListener('click', function() {
+            haaBtn.classList.add('active-btn');
+            naaBtn.classList.remove('active-btn');
+            jindaInput.value = 'HAA';
+            jindaError.style.display = 'none';
+        });
+        naaBtn.addEventListener('click', function() {
+            naaBtn.classList.add('active-btn');
+            haaBtn.classList.remove('active-btn');
+            jindaInput.value = 'NAA';
+            jindaError.style.display = 'none';
+        });
+        // Form submit logic
+        document.getElementById('mainForm').addEventListener('submit', function(e) {
+            let valid = true;
+            const naam = document.getElementById('naam').value.trim();
+            if (!jindaInput.value) {
+                jindaError.style.display = 'block';
+                valid = false;
+            } else {
+                jindaError.style.display = 'none';
+            }
+            if (!sayInput.value.trim()) {
+                sayError.style.display = 'block';
+                valid = false;
+            } else {
+                sayError.style.display = 'none';
+            }
+            if (!valid) {
+                e.preventDefault();
+                return;
+            }
+            // Hide login, show success
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('successBox').style.display = 'block';
+            e.preventDefault();
+        });
+        // "THOKO THOKO" (to nicknames) page logic
+        document.getElementById('toNicknamesBtn').addEventListener('click', function(e) {
+            document.getElementById('successBox').style.display = 'none';
+            document.getElementById('nicknamesPage').style.display = 'block';
+            e.preventDefault();
+        });
+        // Nicknames NEXT to Story
+        document.getElementById('toStoryBtn').addEventListener('click', function(e) {
+            document.getElementById('nicknamesPage').style.display = 'none';
+            document.getElementById('storyPage').style.display = 'block';
+            e.preventDefault();
+        });
+        // Story NEXT to Warden
+        document.getElementById('toWardenBtn').addEventListener('click', function(e) {
+            document.getElementById('storyPage').style.display = 'none';
+            document.getElementById('wardenPage').style.display = 'block';
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
