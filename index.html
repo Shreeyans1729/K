@@ -41,7 +41,7 @@
             90% { opacity: 0.7; }
             100% { transform: translateY(-20vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
-        .page-box {
+        .page-box {to 
             background: rgba(14, 22, 35, 0.95);
             border-radius: 30px;
             box-shadow: 0 0 80px 10px #00fff0cc, 0 0 0 2px #00fff0;
@@ -384,6 +384,82 @@
             justify-content: center;
             margin-top: 30px;
         }
+        /* Teacher search section design */
+        .teacher-search-section {
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .teacher-search-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 340px;
+            background: #1b1530;
+            border-radius: 16px;
+            box-shadow: 0 0 14px 2px #00fff066, 0 2px 8px #0fffc044;
+            transition: box-shadow 0.22s;
+        }
+        .teacher-search-inner:focus-within {
+            box-shadow: 0 0 28px 6px #00fff099, 0 2px 20px #ff3c7044;
+        }
+        .search-emoji {
+            font-size: 1.45em;
+            margin-left: 14px;
+            margin-right: 4px;
+            color: #00fff0cc;
+            pointer-events: none;
+            filter: drop-shadow(0 0 4px #00fff0aa);
+        }
+        #teacherSearch {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 1.13em;
+            padding: 12px 12px 12px 2px;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 0 16px 16px 0;
+            transition: box-shadow 0.18s, background 0.18s;
+            z-index: 2;
+            position: relative;
+            letter-spacing: 1px;
+        }
+        #teacherSearch::placeholder {
+            color: #00fff088;
+            font-style: italic;
+            font-size: 0.97em;
+        }
+        .search-bar-glow {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            right: 4px;
+            bottom: 4px;
+            pointer-events: none;
+            border-radius: 12px;
+            background: linear-gradient(90deg, #00fff088 0%, #7200ff55 70%, #ff3c7055 100%);
+            filter: blur(8px);
+            opacity: 0.35;
+            z-index: 1;
+            transition: opacity 0.18s;
+        }
+        .teacher-search-inner:focus-within .search-bar-glow {
+            opacity: 0.7;
+        }
+        .search-tip {
+            color: #00fff0bb;
+            font-size: 0.98em;
+            margin-top: 8px;
+            margin-left: 8px;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 0.7px;
+            text-shadow: 0 0 8px #00fff044;
+            text-align: center;
+        }
         @media (max-width: 700px) {
             .page-box, .nicknames-page, .story-page, .warden-page, .final-page {
                 width: 98vw;
@@ -391,6 +467,7 @@
                 min-width: 0;
             }
             .emoji-float { font-size: 2.1em; }
+            .teacher-search-inner { max-width: 95vw; }
         }
     </style>
 </head>
@@ -492,13 +569,19 @@
             <button class="emoji-reaction-btn" data-emoji="🤙">🤙<span class="emoji-reaction-count" id="emojiCount-🤙">0</span></button>
             <button class="emoji-reaction-btn" data-emoji="🤘">🤘<span class="emoji-reaction-count" id="emojiCount-🤘">0</span></button>
         </div>
-        <!-- Search box for teachers -->
-        <div class="input-group" style="margin-bottom:18px;max-width:320px;">
-            <input type="text" id="teacherSearch" placeholder="Search teacher..." style="background:#181828;color:#fff;border-radius:8px;border:none;width:100%;padding:12px;font-size:1rem;box-shadow:0 2px 12px #00fff044;">
+        <!-- Enhanced Search box for teachers -->
+        <div class="teacher-search-section">
+            <div class="teacher-search-inner">
+                <span class="search-emoji" aria-label="Search">🔎</span>
+                <input type="text" id="teacherSearch" placeholder="Type to search teachers..." autocomplete="off">
+                <span class="search-bar-glow"></span>
+            </div>
+            <div class="search-tip">Type a name or subject to filter teachers below</div>
         </div>
         <div class="story-section">
             <b>School ke teachers aur unki yaadein:</b><br>
             <ul id="teachersList">
+                <!-- ... teacher <li> items as before ... -->
                 <li><b>Rishav Sir</b>:<br>Saatvi mein aaye, thoda style dikhane lage,
 Krish ke saath football ke kisse sunane lage.
 Maths ki trick se sabko gumaan mein daalne lage,
@@ -768,7 +851,7 @@ Unka gyaan, unka guidance — hamesha hoga humare sangon mein. ❤️<br></li>
         setupEmojiReactions('emojiReactions2','2-');
         showPage('loginContainer');
 
-        // Teacher search/filter logic for story page
+        // Teacher search/filter logic for story page (with highlight)
         (function() {
             const searchInput = document.getElementById('teacherSearch');
             const teachersList = document.getElementById('teachersList');
@@ -780,8 +863,15 @@ Unka gyaan, unka guidance — hamesha hoga humare sangon mein. ❤️<br></li>
                 items.forEach(li => {
                     // Extract name from possible bold
                     let name = li.querySelector('b') ? li.querySelector('b').textContent : li.textContent;
-                    if (name.toLowerCase().indexOf(filter) !== -1) {
+                    if (name.toLowerCase().indexOf(filter) !== -1 || filter === "") {
                         li.style.display = '';
+                        // Highlight match
+                        if (filter && li.querySelector('b')) {
+                            let regex = new RegExp('(' + filter.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+                            li.querySelector('b').innerHTML = li.querySelector('b').textContent.replace(regex, "<span style='background:#00fff044;color:#ff3c70;box-shadow:0 0 8px #00fff0aa;border-radius:3px;padding:0 3px;'>$1</span>");
+                        } else if(li.querySelector('b')) {
+                            li.querySelector('b').innerHTML = li.querySelector('b').textContent;
+                        }
                     } else {
                         li.style.display = 'none';
                     }
