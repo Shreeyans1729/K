@@ -457,7 +457,7 @@
     </div>
     <!-- Nicknames Page -->
     <div class="nicknames-page page-box" id="nicknamesPage" style="display:none;">
-        <div class="nicknames-title">Bokchodiyaan 😎🤘</div>
+        <div class="nicknames-title">Pyare naams 😎🤘</div>
         <table class="nicknames-table">
             <thead>
                 <tr><th>Nicknames</th></tr>
@@ -492,12 +492,75 @@
             <button class="emoji-reaction-btn" data-emoji="🤙">🤙<span class="emoji-reaction-count" id="emojiCount-🤙">0</span></button>
             <button class="emoji-reaction-btn" data-emoji="🤘">🤘<span class="emoji-reaction-count" id="emojiCount-🤘">0</span></button>
         </div>
+        <!-- Search box for teachers -->
+        <div class="input-group" style="margin-bottom:18px;max-width:320px;">
+            <input type="text" id="teacherSearch" placeholder="Search teacher..." style="background:#181828;color:#fff;border-radius:8px;border:none;width:100%;padding:12px;font-size:1rem;box-shadow:0 2px 12px #00fff044;">
+        </div>
         <div class="story-section">
             <b>School ke teachers aur unki yaadein:</b><br>
-            <ul>
-                <li><b>Rishav Sir</b>: School ki motivation ki factory.</li>
-                <li><b>Chandraketu Sir</b>: Unka padhane ka style... ahem... legendary! 😂</li>
-                <li><b>Sudhakar Sir</b>: Reason ho ya na ho, maar pakki. Lekin dil ke acche.</li>
+            <ul id="teachersList">
+                <li><b>Rishav Sir</b>:<br>Saatvi mein aaye, thoda style dikhane lage,
+Krish ke saath football ke kisse sunane lage.
+Maths ki trick se sabko gumaan mein daalne lage,
+Girls ke dil mein silently bas jaane lage. 💫<br>
+
+Aathvi mein aaye, class teacher bane khaas,
+Science weak tha, par bataya kaise hota hai paas.
+Support mila unse, har sawal ka mila ulta-jawaab,
+Guidance mein unka tha ek alag hi andaaz. ✨<br>
+
+Phir hostel gaye, hum bhi piche-piche nikal gaye,
+Football ke field mein Josh ke saath mil gaye.
+Shuru mein laga, bhai kya mast game hai bhai,
+Par kuch dino mein samjha — sir toh goal banake bas pass hi kar gaye! 😅<br>
+
+Saatvi se dasvi tak mila unka pyaar,
+Kabhi na lage ki sir door ho to ho intezaar.
+Har mor pe kiya help, na chhoda kabhi yeh yaar,
+Rishav sir jaise teacher — milte hain bade dildaar! ❤️
+                <br> Vo gaane gaana.. Vo bachchon ko dusre duniyaan ka shair karana kuch alag hi tha unka pyar💝</li><br>
+                <li><b>Chandraketu Sir</b>:<br>Dekha tha pehle bhi, kabhi is ma'am ke saath, kabhi uske saath,
+Par mulaqat hui theek se 9th mein, class teacher ke path.
+Sportive the itne, ke ghar baat karni ho toh bolo saaf,
+Kuch mangwana ho toh bolo — jaise teacher nahi koi bhai ka raaf! 😄<br>
+
+Prantik ka rakhte the khaas khayaal, dil se karte the care,
+Par uss extra pyaar ne banaya kuch aur students ko beware.
+Complain hui, mood change hua, aur badal gaya poora flair,
+Kabhi chill sir, ban gaye serious — laga ho gaya unfair. 😅<br>
+
+Pehle padhate-padhate phone mein kho jaate the mast,
+Phir achanak kitabon se ban gaya unka vishwas ka rasta sasta aur past.
+Lekin yaad hai ek scene, jiska maza sabne liya tha hardcast —
+Arnav ko bola, "I welcome you," aur sabka ho gaya burst-blast! 💥<br>
+
+Kabhi pyaar se, kabhi dosti se, kabhi phone se judte the sir,
+Chandraketu sir jaise teachers — yaadon mein reh jaate hain zarur.
+Thoda hassi, thoda gussa, thoda sweet aur thoda blur,
+Par ek baat pakki — unke bina class lagti thi bilkul bas "dull" aur "burr"! 😌<br>
+              Board pe chalk uthake jab likhne ka aata tha scene,
+Par finger hoti thi middle, aur class ho jaati silent screen.
+Koi kuch na bole, sab aankhon se karte the baat,
+Ek dusre ko dekh muskaate, le lete mazaak ka swaad. 😁  </li>
+                <li><b>Sudhakar Sir</b>:<br>Pehchaan thi pehle se, exam department ke the star,
+Class 9th mein aaye tab mila unka asli avataar.
+Janwar ki tarah marte the, karte na kisi se vyavahaar,
+Homework ka tha dher, aur aankhon mein bas tha maar! 😬<br>
+
+Kahi se aate, maar ke jaate, bas dhoondte the bahana,
+Na koi hello, na haan, bas chalti thi unki purani kahaniyana.
+Par department wale the, to kabhi help ka milta tha khazana,
+Samajh aaya — daant ke peeche bhi tha ek asliyat ka thikana. 📘<br>
+
+Do period ke baad le jaate games mein, hota tha sukoon,
+Class se bahar nikalte hi milta tha ek naya junoon.
+N.C.E.R.T. ke alawa kuch mat padho, bas yahi tha unka kanoon,
+Lekin unke motivation ne, bana diya padhai ka bhi ek khoobsurat dhoon. 🎯<br>
+
+Baat-baat mein mazaak bhi karte, muskurahat thi andekhi,
+Help karte the chhupke se, unki niyat thi kuch alag si dekhi.
+Sudhakar Sir — the strict bhi, sweet bhi, thode se unique the sahi,
+Unke jaise teacher ho toh darr bhi lage... aur lage yaari bhi kahi! ❤️<br> </li>
                 <li><b>Divya Jyoti Mam</b>: Science ki queen, masti ki machine.</li>
                 <li><b>Sujit & Pratyush Sir</b>: Hamare superheroes, hamesha ready to help.</li>
                 <li><b>Vikash Sir</b>: "Padho na ji, exam sir pe hai!"</li>
@@ -506,7 +569,30 @@
                 <li><b>Prantik & Chandraketu Sir</b>: Chemistry wali chemistry! 😏</li>
                 <li><b>Nishant Sir</b>: Bindaas, no filter!</li>
                 <li><b>Neeraj Sir</b>: Jee-NEET wala gyaan.</li>
-                <li><b>Ujjwal Sir</b>: "Tum log lalla ho re!"</li>
+                <li><b>Ujjwal Sir</b>:<br>The pehle se school mein, par 2019 ke pehle chale gaye the door,
+Par jab zarurat padi maths ki, toh wapas aaye ban ke noor.
+Unke aate hi bhaiya log bole – “Sir toh hai top class,”
+Unke naam se hi ho gaya, poori class ka blast! 🔥<br>
+
+Class 9th mein mila unse pehli baar, aur kya hi mila tha yaar,
+Entry lete hi laga jaise – "ab toh padayi lagegi maar!" 😅<br>
+Tough se tough concept ko bana dete the asaan,
+Aur unka IIT ka experience – bhai wah, bilkul tha mahaan! 🎓<br>
+
+Bataaye the IIT ke scenes, professor wali baat bhi ki thi,
+Knowledge ka tha bhandaar, har lecture mein roshni si thi.
+9th mein 10th ka, 10th mein 11th ka padha diye kaam,
+Unka gyaan sun ke lagta – maths bhi ban gaya mera salaam! 🙌<br>
+
+Kabhi-kabhi physics ka bhi basic samjha dete the pyar se,
+Concept clear karna tha unka kaam, bina kisi bhitar ke shor se.
+10th tak toh guide kiya har mod pe bina rukawat ke,
+Aur 10th ke baad bhi samjhaya – "life ka road map kya leke!" 🛣️<br>
+
+Hello bolte hi lagta tha sir aagaye hain aaj kuch khaas batane,
+Unke jaise teacher ho toh, maths lage bina pressure ke easy banane.
+Ujjwal Sir — ek naam nahi, ek yaad hain classroom ke rangon mein,
+Unka gyaan, unka guidance — hamesha hoga humare sangon mein. ❤️<br></li>
                 <li><b>Guddu Sir</b>: "Tor dunga!"</li>
                 <li><b>Ranjan Sir</b>: "Kut dunga!" & funny towel kahaniyan.</li>
                 <li><b>Undranil Sir</b>: DJ Snake + BP Check = Allrounder!</li>
@@ -681,6 +767,27 @@
         setupEmojiReactions('emojiReactions1');
         setupEmojiReactions('emojiReactions2','2-');
         showPage('loginContainer');
+
+        // Teacher search/filter logic for story page
+        (function() {
+            const searchInput = document.getElementById('teacherSearch');
+            const teachersList = document.getElementById('teachersList');
+            if (!searchInput || !teachersList) return;
+
+            searchInput.addEventListener('input', function() {
+                const filter = searchInput.value.trim().toLowerCase();
+                const items = teachersList.querySelectorAll('li');
+                items.forEach(li => {
+                    // Extract name from possible bold
+                    let name = li.querySelector('b') ? li.querySelector('b').textContent : li.textContent;
+                    if (name.toLowerCase().indexOf(filter) !== -1) {
+                        li.style.display = '';
+                    } else {
+                        li.style.display = 'none';
+                    }
+                });
+            });
+        })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </body>
